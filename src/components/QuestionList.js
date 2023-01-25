@@ -5,6 +5,7 @@
 //   - removeQuestion: a function to remove a question
 
 import React from "react"
+import QuestionCard from "./QuestionCard"
 
 function QuestionList() {
   return <div>QuestionList</div>
