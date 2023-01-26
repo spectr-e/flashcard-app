@@ -7,7 +7,8 @@
 
 import React from "react"
 
-function QuestionCard({questionCard}) {
+
+function QuestionCard({questioncard}) {
   const [flip, setFlip] = useState(false)
   const [height, setHeight] = useState('initial')
 
@@ -20,7 +21,7 @@ function QuestionCard({questionCard}) {
     setHeight(Math.max(frontHeight, backHeight, 100))
   }
 
-  useEffect(setMaxHeight, [flashcard.question, flashcard.answer, flashcard.options])
+  useEffect(setMaxHeight, [questioncard.question, questioncard.answer, questioncard.options])
   useEffect(() => {
     window.addEventListener('resize', setMaxHeight)
     return () => window.removeEventListener('resize', setMaxHeight)
@@ -33,14 +34,14 @@ function QuestionCard({questionCard}) {
     onClick={() => setFlip(!flip)}
   >
     <div className="front" ref={frontEl}>
-      {flashcard.question}
+      {questioncard.question}
       <div className="flashcard-options">
-        {flashcard.options.map(option => {
+        {questioncard.options.map(option => {
           return <div className="flashcard-option" key={option}>{option}</div>
         })}
       </div>
     </div>
-    <div className="back" ref={backEl}>{flashcard.answer}</div>
+    <div className="back" ref={backEl}>{questioncard.answer}</div>
   </div>
   )
   
