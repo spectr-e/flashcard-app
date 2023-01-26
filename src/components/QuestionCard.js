@@ -35,9 +35,9 @@ function QuestionCard({questioncard}) {
   >
     <div className="front" ref={frontEl}>
       {questioncard.question}
-      <div className="flashcard-options">
+      <div className="questioncard-options">
         {questioncard.options.map(option => {
-          return <div className="flashcard-option" key={option}>{option}</div>
+          return <div className="questioncard-option" key={option}>{option}</div>
         })}
       </div>
     </div>
