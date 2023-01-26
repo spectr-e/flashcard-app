@@ -1,8 +1,11 @@
 import React from "react"
 import "./App.css"
+import AddQuestionForm from "./components/AddQuestionForm"
 
 function App() {
-  return <div>Welcome to my App</div>
+  return <div>
+    <AddQuestionForm/>
+  </div>
 }
 
 export default App

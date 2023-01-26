@@ -6,7 +6,7 @@
 
 import React from "react"
 
-function QuestionList() {
+function QuestionList({question}) {
   return <div>QuestionList</div>
 }
 
