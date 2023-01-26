@@ -1,13 +1,40 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import "./App.css"
 import QuestionList from "./components/QuestionList"
 
 function App() {
   const [flashcards, setFlashcards] = useState([])
+  const [categories, setCategories] = useState([])
+  const categoryEl = useRef(null)
+  const amountEl = useRef(null)
 
-  // GET request to get all flashcards using fetch
+  // A function that decodes the html elements in our questions
+  function decodeString(str) {
+    const textArea = document.createElement("textarea")
+    textArea.innerHTML = str
+    return textArea.value
+  }
+
+  // GET request to get all categories using fetch
   useEffect(() => {
-    fetch("https://opentdb.com/api.php?amount=10")
+    fetch("https://opentdb.com/api_category.php")
+      .then((response) => response.json())
+      .then((data) => {
+        setCategories(() => data.trivia_categories)
+      })
+      .catch((error) => console.error(error))
+  }, [])
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    // GET request to get all flashcards using fetch
+    fetch(
+      "https://opentdb.com/api.php?" +
+        new URLSearchParams({
+          amount: amountEl.current.value,
+          category: categoryEl.current.value,
+        })
+    )
       .then((response) => response.json())
       .then((data) => {
         setFlashcards(
@@ -27,53 +54,48 @@ function App() {
           })
         )
       })
-  }, [])
-
-  // A function that decodes the html elements in our questions
-  function decodeString(str) {
-    const textArea = document.createElement("textarea")
-    textArea.innerHTML = str
-    return textArea.value
   }
 
   return (
-    <div className="container">
-      <QuestionList flashcards={flashcards} />
-    </div>
+    <>
+      <form className="header" onSubmit={handleSubmit}>
+        <div className="form-group">
+          {/* Category Filter */}
+          <label htmlFor="category">Category</label>
+          <select id="category" ref={categoryEl}>
+            {categories.map((category) => {
+              return (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              )
+            })}
+          </select>
+        </div>
+        <div className="form-group">
+          {/* No of Questions Filter */}
+          <label htmlFor="amount">Number of Questions</label>
+          <input
+            type="number"
+            id="amount"
+            min="1"
+            step="1"
+            defaultValue={10}
+            ref={amountEl}
+          ></input>
+        </div>
+        <div className="form-group">
+          {/* Submit Button */}
+          <button className="btn" type="submit">
+            Generate
+          </button>
+        </div>
+      </form>
+      <div className="container">
+        <QuestionList flashcards={flashcards} />
+      </div>
+    </>
   )
 }
-
-// const SAMPLE_FLASHCARDS = [
-//   {
-//     id: 1,
-//     question: "What is 2 + 2 ?",
-//     answer: "4",
-//     options: ["2", "3", "4", "5"],
-//   },
-//   {
-//     id: 2,
-//     question: "What comes after 'A' in 'Adam'?",
-//     answer: "d",
-//     options: ["c", "e", "f", "d"],
-//   },
-// {
-//   id: 3,
-//   question: "Who is the queen of England?",
-//   answer: "Elizabeth",
-//   options: ["Eliezar", "Jane", "Maria", "Elizabeth"],
-// },
-// {
-//   id: 4,
-//   question: "Is a dog an animal?",
-//   answer: "Yes",
-//   options: ["No", "Maybe", "I don't know", "Yes"],
-// },
-// {
-//   id: 5,
-//   question: "The fastest man in the world ?",
-//   answer: "Bolt",
-//   options: ["Bolt", "Trump", "Obama", "Bach"],
-// },
-// ]
 
 export default App
