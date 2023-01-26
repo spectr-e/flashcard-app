@@ -37,7 +37,7 @@ body {
 }
 
 .btn {
-  background-color: hsl(200, 100%, 50%);
+  /* background-color: hsl(200, 100%, 50%); */
   color: #fff;
   padding: 8px 16px;
   border-radius: 4px;
@@ -46,7 +46,7 @@ body {
 }
 
 .btn:hover {
-  background-color: hsl(200, 100%, 40%);
+  background-color: hsl(200, 100%, 30%);
 }
 
 .card-grid {

@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react"
 import "./App.css"
 import QuestionList from "./components/QuestionList"
+import Button from "react-bootstrap/Button"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 function App() {
   const [flashcards, setFlashcards] = useState([])
@@ -86,9 +88,10 @@ function App() {
         </div>
         <div className="form-group">
           {/* Submit Button */}
-          <button className="btn" type="submit">
+          <Button type="submit">Generate</Button>
+          {/* <button className="btn" type="submit">
             Generate
-          </button>
+          </button> */}
         </div>
       </form>
       <div className="container">
