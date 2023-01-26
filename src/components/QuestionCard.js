@@ -21,9 +21,23 @@ function QuestionCard({ flashcard }) {
     // all we want to do is set height value to the max height of any of the sides of the card and set a default minimum height
     setHeight(() => Math.max(frontHeight, backHeight, 100))
   }
+
+  // Set the height of the card to always recalculate when the question/answer/options change
+  useEffect(() => {
+    setMaxHeight()
+  }, [flashcard.question, flashcard.answer, flashcard.options])
+
+  // Set the height of the card to always recalculate when the page size (everytime we resize our browser) changes
+  useEffect(() => {
+    window.addEventListener("resize", setMaxHeight)
+    // cleanup - gets called when the component destroys itself
+    return () => window.removeEventListener("resize", setMaxHeight)
+  }, [])
+
   return (
     <div
       className={`card ${flip ? "flip" : ""}`}
+      style={{ height: height }}
       onClick={() => setFlip(!flip)}
     >
       <div className="front" ref={frontEl}>
