@@ -36,7 +36,11 @@ function App() {
     return textArea.value
   }
 
-  return <QuestionList flashcards={flashcards} />
+  return (
+    <div className="container">
+      <QuestionList flashcards={flashcards} />
+    </div>
+  )
 }
 
 // const SAMPLE_FLASHCARDS = [
