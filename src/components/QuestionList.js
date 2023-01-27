@@ -7,8 +7,14 @@
 import React from "react"
 import QuestionCard from "./QuestionCard"
 
-function QuestionList() {
-  return <div>QuestionList</div>
+function QuestionList({ flashcards }) {
+  return (
+    <div className="card-grid">
+      {flashcards.map((flashcard) => {
+        return <QuestionCard flashcard={flashcard} key={flashcard.id} />
+      })}
+    </div>
+  )
 }
 
 export default QuestionList
