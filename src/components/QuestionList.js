@@ -4,7 +4,6 @@
 //   - answers: an array of answers
 //   - removeQuestion: a function to remove a question
 
-
 import React from "react"
 import QuestionCard from "./QuestionCard"
 
@@ -21,4 +20,3 @@ function QuestionList({ flashcards }) {
 
 
 export default QuestionList
-

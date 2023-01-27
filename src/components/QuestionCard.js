@@ -5,7 +5,6 @@
 // - answer: the answer to be displayed
 // - correctAnswer: the correct answer to be displayed
 
-
 import React, { useEffect, useRef, useState } from "react"
 function QuestionCard({ flashcard }) {
  const [flip, setFlip] = useState(false)
@@ -68,6 +67,3 @@ function QuestionCard({ flashcard }) {
 
 
 export default QuestionCard;
-
-
-
