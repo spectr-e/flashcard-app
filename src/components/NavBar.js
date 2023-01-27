@@ -22,7 +22,7 @@ function NavBar() {
           <NavLink to="/" exact className="navbar-item">
             Home
           </NavLink>
-          <NavLink to="/create-quiz" exact className="navbar-item">
+          <NavLink to="/create" exact className="navbar-item">
             Create
           </NavLink>
           <NavLink to="/questions" exact className="navbar-item">
