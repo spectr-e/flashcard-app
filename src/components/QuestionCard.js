@@ -59,4 +59,4 @@ function QuestionCard({ flashcard }) {
   )
 }
 
-export default QuestionCard
+export default QuestionCard;
