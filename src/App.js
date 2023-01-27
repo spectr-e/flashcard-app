@@ -1,8 +1,12 @@
 import React, { useEffect, useRef, useState } from "react"
-import "./App.css"
-import QuestionList from "./components/QuestionList"
-import Button from "react-bootstrap/Button"
+import { Switch, Route } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
+import "./App.css"
+
+import NavBar from "./components/NavBar"
+import CardPage from "./containers/CardPage"
+import FormPage from "./containers/FormPage"
+import ListPage from "./containers/ListPage"
 
 function App() {
   const [flashcards, setFlashcards] = useState([])
@@ -59,45 +63,26 @@ function App() {
   }
 
   return (
-    <>
-      <form className="header" onSubmit={handleSubmit}>
-        <div className="form-group">
-          {/* Category Filter */}
-          <label htmlFor="category">Category</label>
-          <select id="category" ref={categoryEl}>
-            {categories.map((category) => {
-              return (
-                <option key={category.id} value={category.id}>
-                  {category.name}
-                </option>
-              )
-            })}
-          </select>
-        </div>
-        <div className="form-group">
-          {/* No of Questions Filter */}
-          <label htmlFor="amount">Number of Questions</label>
-          <input
-            type="number"
-            id="amount"
-            min="1"
-            step="1"
-            defaultValue={10}
-            ref={amountEl}
-          ></input>
-        </div>
-        <div className="form-group">
-          {/* Submit Button */}
-          <Button type="submit">Generate</Button>
-          {/* <button className="btn" type="submit">
-            Generate
-          </button> */}
-        </div>
-      </form>
-      <div className="container">
-        <QuestionList flashcards={flashcards} />
-      </div>
-    </>
+    <div>
+      <NavBar />
+      <Switch>
+        <Route exact path="/">
+          <CardPage
+            flashcards={flashcards}
+            categories={categories}
+            categoryEl={categoryEl}
+            amountEl={amountEl}
+            handleSubmit={handleSubmit}
+          />
+        </Route>
+        <Route path="/create">
+          <FormPage />
+        </Route>
+        <Route path="/questions">
+          <ListPage flashcards={flashcards} />
+        </Route>
+      </Switch>
+    </div>
   )
 }
 
