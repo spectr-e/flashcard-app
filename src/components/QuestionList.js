@@ -5,17 +5,9 @@
 //   - removeQuestion: a function to remove a question
 
 import React from "react"
-import QuestionCard from "./QuestionCard"
 
-function QuestionList(questioncards) {
-  return (
-    <div className="card-grid">
-      {questioncards.map(question => {
-        return <Questioncard flashcard={questioncard} key={questioncard.id} />
-      })}
-    </div>
-  )
-
+function QuestionList() {
+  return {}
 }
 
-export default QuestionList;
+export default QuestionList
