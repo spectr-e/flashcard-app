@@ -3,3 +3,20 @@
 //   - questions: an array of questions
 //   - answers: an array of answers
 //   - removeQuestion: a function to remove a question
+
+import React from "react"
+import QuestionCard from "./QuestionCard"
+
+
+function QuestionList({ flashcards }) {
+ return (
+   <div className="card-grid">
+     {flashcards.map((flashcard) => {
+       return <QuestionCard flashcard={flashcard} key={flashcard.id} />
+     })}
+   </div>
+ )
+}
+
+
+export default QuestionList
