@@ -1,45 +1,30 @@
-# Uwezo Flashcard App
-## Introduction
-The app is generally multifunctional; it can be used as a recreational application or as a resource for students who want to enhance their memory.
-
-The application's design and functionality have been executed by the use of css, javascript and html. The user interface and front-end has been created by react.
-
-## Features/Deliverables
-//*Minimum Viable Product*//
 
 
--Flashcards are displayed on the main page of the application.On the front side of the card component, the answers are offered as choices and
+# Uwezo Flashcard Application
 
 
-- Upon clicking,  the user is able to flip the card to reveal the correct answer.
+This is a flashcard application built with React that allows users to fetch questions and answers from the [OpenDB API](https://opendb.com/) and generate them as cards that can be flipped to reveal the answer. The application is hosted on https://uwezo.netlify.app. Users can select a category and specify the number of questions to generate. The app utilizes Bootstrap 5 for styling and layout.
 
+## Core Delivables
 
--the user is able the choose the number of questions to generate
+ - Fetch questions and answers from OpenDB API 
+ - Select a category and specify the number of questions to generate 
+ - Display questions and answers as cards 
+ - Flip cards to reveal answers 
+ - Responsive design using Bootstrap 5
 
+## Usage
 
--For easier navigation , the questions are sorted by categories. The classification makes it easier for the user to focus in a desired discipline.
+ 1. Go to https://uwezo.netlify.app 
+ 2. Select a category from the dropdown menu 
+ 3. Specify the number of questions to generate 
+ 4. Click on the "Generate" button 
+ 5. Study the flashcards by flipping them to reveal the answers
 
+## Contributing
 
--Our application is mobile friendly and can be viewed on a number of mobile devices.
+This project is a collaborative effort by [Josiah Nganga](https://github.com/spectr-e), [Charlotte Karimi](https://github.com/charlotte283), [Ian Gathui](https://github.com/gathuiia), [Brian Mathenge](https://github.com/wamwangi-mathenge), [Brandon Kiza](https://github.com/brandon446). If you would like to contribute to this project, please feel free to open an issue or submit a pull request.
 
+## License
 
-
-
-
-
-## Running the project
-Navigate to https://uwezo.netlify.app/ to run the application.
-
-
-## Participants
-
-
-Below are the developers involved in the framework and development of the application:
-
-
--Josiah Nganga : https://github.com/spectr-e
--Brian Mathenge : https://github.com/wamwangi-mathenge
--Charlotte Mujuri : https://github.com/charlotte283
--Ian Gathui : https://github.com/gathuiia
--Brandon : https://github.com/brandon446
-
+This project is licensed under the MIT License.
